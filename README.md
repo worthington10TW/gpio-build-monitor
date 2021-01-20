@@ -69,6 +69,8 @@ export CIRCLE_CI_TOKEN<TOKEN>
 
 - [ ] Feedback when connection is unsuccessful.
 - [ ] Allow multiple access tokens for integrations.
+- [ ] Allow default pin overrides
+- [ ] Enhanced CLI functionality, possibly with click
 
 
 
