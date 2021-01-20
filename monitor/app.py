@@ -6,11 +6,11 @@ import json
 import os
 import pprint
 from gpio.board import Board
-from .service.aggregator_service import AggregatorService
-from .service.integration_mapper import IntegrationMapper
-from .ci_gateway import integration_actions as available_integrations
-from .log_handler import setup_logger
-from .build_monitor import BuildMonitor
+from monitor.service.aggregator_service import AggregatorService
+from monitor.service.integration_mapper import IntegrationMapper
+from monitor.ci_gateway import integration_actions as available_integrations
+from monitor.log_handler import setup_logger
+from monitor.build_monitor import BuildMonitor
 
 
 async def main(conf_file, level):
