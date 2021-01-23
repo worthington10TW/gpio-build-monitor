@@ -28,7 +28,11 @@ When running on your machine the mock GPIO board is used, this is disabled when 
 
 First make sure the module is installed.
 
-`python3 -O monitor -conf monitor/integrations.json`
+Install the GPIO package `pip3 install Rpi.GPIO`
+
+Then run the module
+
+`python3 -O -m monitor -conf integrations.json`
 
 ## Signals
 
