@@ -28,8 +28,9 @@ class BoardTests(aiounittest.AsyncTestCase):
             calls = [mock.call(Lights.GREEN.value, 0, initial=0),
                      mock.call(Lights.YELLOW.value, 0, initial=0),
                      mock.call(Lights.RED.value, 0, initial=0),
-                     mock.call(Lights.BLUE.value, 0, initial=0)]
-            mocked.assert_has_calls(calls)
+                     mock.call(Lights.BLUE.value, 0, initial=0),
+                     mock.call(Lights.PURPLE.value, 0, initial=0)]
+            mocked.assert_has_calls(calls, any_order=True)
 
     @mock.patch('monitor.gpio.Mock.GPIO.output')
     def test_turn_on(self, mocked):
@@ -48,10 +49,10 @@ class BoardTests(aiounittest.AsyncTestCase):
         mocked.return_value.ChangeDutyCycle = mock.MagicMock()
         mocked.return_value.stop = mock.MagicMock()
         with Board() as board:
-            await board.pulse(Lights.BLUE)
+            await board.pulse(Lights.PURPLE)
             await asyncio.sleep(1)
-            mocked.assert_called_with(Lights.BLUE.value, 100)
-            board.off(Lights.BLUE)
+            mocked.assert_called_with(Lights.PURPLE.value, 100)
+            board.off(Lights.PURPLE)
             assert mocked.return_value.stop.called
             mocked.return_value.ChangeDutyCycle.called
 
