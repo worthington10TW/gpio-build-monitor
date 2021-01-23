@@ -22,6 +22,14 @@ To install directly from github:
 
 `pip3 install git+https://github.com/worthington10TW/gpio-build-monitor#egg=monitor`
 
+### Run on your raspberry pi 
+
+When running on your machine the mock GPIO board is used, this is disabled when running optimized.
+
+First make sure the module is installed.
+
+`python3 -O monitor -conf monitor/integrations.json`
+
 ## Signals
 
 - Blue light: Fetching data

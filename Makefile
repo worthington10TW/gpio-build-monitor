@@ -1,6 +1,5 @@
 setup:
 	PYTHONPATH=$PYTHONPATH:..
-	mkdir -p logs
 	pipenv --python 3
 	pipenv install -d
 	pipenv run pipenv-setup sync
@@ -12,7 +11,6 @@ init:
 .PHONY: test
 test: init
 	pipenv run pytest test/monitor -v --junitxml=junit/test-results.xml
-	#pipenv run pytest --pyargs test/monitor -v --junitxml
 
 .PHONY: debug
 debug: init
