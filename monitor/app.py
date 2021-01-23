@@ -5,7 +5,7 @@ import asyncio
 import json
 import os
 import pprint
-from gpio.board import Board
+from monitor.gpio.board import Board
 from monitor.service.aggregator_service import AggregatorService
 from monitor.service.integration_mapper import IntegrationMapper
 from monitor.ci_gateway import integration_actions as available_integrations

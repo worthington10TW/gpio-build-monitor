@@ -1,6 +1,6 @@
 import asyncio
 import logging
-import app
+import monitor.app as app
 
 import argparse
 

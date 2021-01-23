@@ -27,6 +27,7 @@ class CiResult(enum.Enum):
     FAIL = "FAIL"
     RUNNING = "RUNNING"
     UNKNOWN = "UNKNOWN"
+    CONNECTION_ERROR = "CONNECTION_ERROR"
     NONE = "NONE"
 
     def __eq__(self, other):
