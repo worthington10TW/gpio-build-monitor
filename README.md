@@ -30,7 +30,7 @@ First make sure the module is installed.
 
 Install the GPIO package `pip3 install Rpi.GPIO`
 
-Then run the module
+Then run the module.
 
 `python3 -O -m monitor -conf integrations.json`
 
