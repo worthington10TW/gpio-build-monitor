@@ -79,20 +79,20 @@ export CIRCLE_CI_TOKEN<TOKEN>
 
 ## Shopping list
 
-[Raspberry Pi Zero](https://thepihut.com/products/raspberry-pi-zero-w?src=raspberrypi)
-[SD card](https://www.amazon.co.uk/Kingston-microSD-SDCS2-Adapter-Included/dp/B07YGZ7FY7/)
-[Resistor kit](https://thepihut.com/products/ultimate-resistor-kit)
-[LED kit](https://thepihut.com/products/ultimate-5mm-led-kit)
-[Cables](https://thepihut.com/products/thepihuts-jumper-bumper-pack-120pcs-dupont-wire)
-[Breadboard](https://thepihut.com/products/raspberry-pi-breadboard-half-size)
-[Shrink cables](https://thepihut.com/products/multi-colored-heat-shrink-pack-3-32-1-8-3-16-diameters)
+- [Raspberry Pi Zero](https://thepihut.com/products/raspberry-pi-zero-w?src=raspberrypi)
+- [SD card](https://www.amazon.co.uk/Kingston-microSD-SDCS2-Adapter-Included/dp/B07YGZ7FY7/)
+- [Resistor kit](https://thepihut.com/products/ultimate-resistor-kit)
+- [LED kit](https://thepihut.com/products/ultimate-5mm-led-kit)
+- [Cables](https://thepihut.com/products/thepihuts-jumper-bumper-pack-120pcs-dupont-wire)
+- [Breadboard](https://thepihut.com/products/raspberry-pi-breadboard-half-size)
+- [Shrink cables](https://thepihut.com/products/multi-colored-heat-shrink-pack-3-32-1-8-3-16-diameters)
 
-[Anti-static band](https://www.amazon.co.uk/gp/product/B07TGD5CD8/)
-[Rubber mat](https://www.amazon.co.uk/gp/product/B075D9R8PZ/)
-[Soldering iron](https://www.amazon.co.uk/gp/product/B07X3CZ3FJ/)
-[Multimeter](https://www.amazon.co.uk/gp/product/B01N35ZVKY/)
+- [Anti-static band](https://www.amazon.co.uk/gp/product/B07TGD5CD8/)
+- [Rubber mat](https://www.amazon.co.uk/gp/product/B075D9R8PZ/)
+- [Soldering iron](https://www.amazon.co.uk/gp/product/B07X3CZ3FJ/)
+- [Multimeter](https://www.amazon.co.uk/gp/product/B01N35ZVKY/)
 
-[Frame](https://www.ikea.com/gb/en/p/ribba-frame-white-80378423/)
+- [Frame](https://www.ikea.com/gb/en/p/ribba-frame-white-80378423/)
 
 ## TODO
 
