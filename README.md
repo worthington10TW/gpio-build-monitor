@@ -77,7 +77,14 @@ export CIRCLE_CI_TOKEN<TOKEN>
 
 - Pin constants can be found in `src/gpio/constants.py`
 
-## Shopping list
+
+## My build
+
+![my build](build_monitor.jpg)
+
+### Shopping list
+
+#### The monitor
 
 - [Raspberry Pi Zero](https://thepihut.com/products/raspberry-pi-zero-w?src=raspberrypi)
 - [SD card](https://www.amazon.co.uk/Kingston-microSD-SDCS2-Adapter-Included/dp/B07YGZ7FY7/)
@@ -87,10 +94,14 @@ export CIRCLE_CI_TOKEN<TOKEN>
 - [Breadboard](https://thepihut.com/products/raspberry-pi-breadboard-half-size)
 - [Shrink cables](https://thepihut.com/products/multi-colored-heat-shrink-pack-3-32-1-8-3-16-diameters)
 
+#### Useful kit
+
 - [Anti-static band](https://www.amazon.co.uk/gp/product/B07TGD5CD8/)
 - [Rubber mat](https://www.amazon.co.uk/gp/product/B075D9R8PZ/)
 - [Soldering iron](https://www.amazon.co.uk/gp/product/B07X3CZ3FJ/)
 - [Multimeter](https://www.amazon.co.uk/gp/product/B01N35ZVKY/)
+
+#### The housing
 
 - [Frame](https://www.ikea.com/gb/en/p/ribba-frame-white-80378423/)
 
@@ -100,6 +111,9 @@ export CIRCLE_CI_TOKEN<TOKEN>
 - [ ] Allow multiple access tokens for integrations.
 - [ ] Allow default pin overrides
 - [ ] Enhanced CLI functionality, possibly with click
+- [ ] GoCD integration
+- [ ] Concourse integration
+- [ ] Travis integration  
 
 
 
