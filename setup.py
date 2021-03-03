@@ -22,7 +22,7 @@ setup(
     entry_points={"console_scripts": ["monitor=monitor.app:main"]},
     package_data={"integrations.json": ["monitor/integrations.json"]},
     install_requires=[
-        "aiohttp==3.7.3",
+        "aiohttp==3.7.4",
         "aioresponses==0.7.1",
         "appdirs==1.4.4",
         "async-timeout==3.0.1; python_full_version >= '3.5.3'",
