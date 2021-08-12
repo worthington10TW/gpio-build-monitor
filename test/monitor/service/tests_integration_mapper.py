@@ -29,7 +29,8 @@ class IntegrationMapperTests(unittest.TestCase):
         }
         result = IntegrationMapper(integrations, 1).get()
         self.assertEqual(2, len(result))
-        [self.assertEqual(cons.Integration.GITHUB, r['type']) for r in result]
+        [self.assertEqual(
+            cons.IntegrationType.GITHUB, r['type']) for r in result]
         [self.assertIsNotNone(r['action']) for r in result]
 
     @mock.patch('monitor.ci_gateway.github.CircleCI')

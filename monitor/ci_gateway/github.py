@@ -4,7 +4,7 @@ from abc import ABC
 from itertools import groupby
 
 from monitor.ci_gateway.constants import \
-    Integration, CiResult, APIError, IntegrationAdapter
+    IntegrationType, CiResult, APIError, IntegrationAdapter, BuildStatus
 from aiohttp import ClientSession
 
 
@@ -15,10 +15,10 @@ class GitHubAction(IntegrationAdapter, ABC):
         self.token = os.getenv('GITHUB_TOKEN')
         self.excluded_workflows = kwargs.get('excluded_workflows') or []
 
-    def get_type(self):
-        return Integration.GITHUB
+    def get_type(self) -> IntegrationType:
+        return IntegrationType.GITHUB
 
-    async def get_latest(self):
+    async def get_latest(self) -> BuildStatus:
         super().get_latest()
         base = 'https://api.github.com'
         url = f'{base}/repos/{self.username}/{self.repo}/actions/runs'
@@ -44,11 +44,11 @@ class GitHubAction(IntegrationAdapter, ABC):
         return response
 
     @staticmethod
-    def map_result(latest):
+    def map_result(latest) -> BuildStatus:
         conclusion = latest["conclusion"]
         status = latest["status"]
-        return dict(
-            type=Integration.GITHUB,
+        return BuildStatus(
+            type=IntegrationType.GITHUB,
             vcs=latest["html_url"],
             id=latest["id"],
             name=latest["name"],

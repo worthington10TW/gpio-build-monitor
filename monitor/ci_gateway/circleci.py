@@ -3,8 +3,8 @@ import logging
 from abc import ABC
 from itertools import groupby
 
-from monitor.ci_gateway.constants import Integration, \
-    APIError, IntegrationAdapter, CiResult
+from monitor.ci_gateway.constants import IntegrationType, \
+    APIError, IntegrationAdapter, CiResult, BuildStatus
 from aiohttp import ClientSession, client_exceptions
 
 
@@ -15,10 +15,10 @@ class CircleCI(IntegrationAdapter, ABC):
         self.token = os.getenv('CIRCLE_CI_TOKEN')
         self.excluded_workflows = kwargs.get('excluded_workflows') or []
 
-    def get_type(self):
-        return Integration.CIRCLECI
+    def get_type(self) -> IntegrationType:
+        return IntegrationType.CIRCLECI
 
-    async def get_latest(self):
+    async def get_latest(self) -> BuildStatus:
         super().get_latest()
         base = 'https://circleci.com/api/v1.1'
         url = f'{base}/project/github/{self.username}/{self.repo}?shallow=true'  # noqa: E501
@@ -51,11 +51,11 @@ class CircleCI(IntegrationAdapter, ABC):
         return response
 
     @staticmethod
-    def map_result(latest):
+    def map_result(latest: dict) -> BuildStatus:
         outcome = latest["outcome"]
         lifecycle = latest["lifecycle"]
-        return dict(
-            type=Integration.CIRCLECI,
+        return BuildStatus(
+            type=IntegrationType.CIRCLECI,
             vcs=latest["vcs_url"],
             id=latest["build_num"],
             name=latest['workflows']['workflow_name'],

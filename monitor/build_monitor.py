@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 
 import logging
+
+from monitor.gpio.board import Board
 from monitor.gpio.constants import Lights
 from monitor.service.aggregator_service import AggregatorService, Result
 
 
 class BuildMonitor(object):
     def __init__(self,
-                 board,
+                 board: Board,
                  aggregator: AggregatorService):
         self.board = board
         self.aggregator = aggregator
 
-    async def run(self):
+    async def run(self) -> None:
         self.board.on(Lights.BLUE)
         logging.info("Getting build results")
         result = await self.aggregator.run()

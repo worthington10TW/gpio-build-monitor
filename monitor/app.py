@@ -5,6 +5,8 @@ import asyncio
 import json
 import os
 import pprint
+
+from monitor.config import Config
 from monitor.gpio.board import Board
 from monitor.service.aggregator_service import AggregatorService
 from monitor.service.integration_mapper import IntegrationMapper
@@ -20,7 +22,7 @@ async def main(conf_file, level):
 
     with Board() as board:
         logging.info('Board initialised')
-        poll_in_seconds = config.get('poll_in_seconds') or 30
+        poll_in_seconds = config['poll_in_seconds'] or 30
         integrations = config['integrations']
         logging.info(f'Polling increment (in seconds): {poll_in_seconds}')
         logging.info(f'Integrations: {pprint.pformat(integrations)}')
@@ -32,10 +34,11 @@ async def main(conf_file, level):
         monitor = BuildMonitor(board, aggregator)
         while True:
             await monitor.run()
+            logging.info(f'Sleeping for {poll_in_seconds} seconds')
             await asyncio.sleep(poll_in_seconds)
 
 
-def get_config(conf_file):
+def get_config(conf_file) -> Config:
     path = os.path.join(
         os.getcwd(), conf_file)
     response_json = path

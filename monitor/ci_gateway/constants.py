@@ -1,28 +1,39 @@
 #!/usr/bin/env python3
-
-import enum
+from typing import TypedDict
+from enum import Enum
 from abc import abstractmethod, ABC
 import logging
 
+from build.lib.monitor.ci_gateway.constants import CiResult
 
-class Integration(enum.Enum):
+
+class IntegrationType(Enum):
     GITHUB = "GITHUB"
     CIRCLECI = "CIRCLE_CI"
+
+
+class BuildStatus(TypedDict):
+    type: IntegrationType
+    vcs: str
+    id: str
+    name: str
+    start: str
+    status: CiResult
 
 
 class IntegrationAdapter(ABC):
     @property
     @abstractmethod
-    def get_type(self) -> Integration:
+    def get_type(self) -> IntegrationType:
         pass
 
     @abstractmethod
-    def get_latest(self):
+    def get_latest(self) -> BuildStatus:
         logging.info(f'Initiating integration {self.get_type()}')
         pass
 
 
-class CiResult(enum.Enum):
+class CiResult(Enum):
     PASS = "PASS"
     FAIL = "FAIL"
     RUNNING = "RUNNING"

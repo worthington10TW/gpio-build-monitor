@@ -28,7 +28,7 @@ setup(
         "async-timeout==3.0.1; python_full_version >= '3.5.3'",
         "asyncio==3.4.3",
         "attrs==20.3.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
-        "black==19.10b0; python_version >= '3.6' and python_version >= '3.6'",
+        "black==19.10b0; python_version >= '3.6'",
         "cached-property==1.5.2",
         "cerberus==1.3.2",
         "certifi==2020.12.5",

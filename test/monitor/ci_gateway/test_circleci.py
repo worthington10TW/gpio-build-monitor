@@ -6,14 +6,14 @@ import os
 import aiounittest
 from aioresponses import aioresponses
 from monitor.ci_gateway.circleci import CircleCI, APIError
-from monitor.ci_gateway.constants import CiResult as Result, Integration
+from monitor.ci_gateway.constants import CiResult as Result, IntegrationType
 
 os.environ['CIRCLECI_TOKEN'] = 'secret'
 
 
 class CircleCiTests(aiounittest.AsyncTestCase):
     def test_type(self):
-        self.assertEqual(Integration.CIRCLECI,
+        self.assertEqual(IntegrationType.CIRCLECI,
                          CircleCI(**{
                              'username': 'super-man',
                              'repo': 'awesome'}).get_type())
@@ -30,7 +30,7 @@ class CircleCiTests(aiounittest.AsyncTestCase):
             "vcs_url": "http://superurl.com"
         }"""
         result = CircleCI.map_result(json.loads(latest))
-        self.assertEqual(Integration.CIRCLECI, result["type"])
+        self.assertEqual(IntegrationType.CIRCLECI, result["type"])
         self.assertEqual(Result.PASS, result["status"])
         self.assertEqual("2020-12-28T09:23:57Z", result["start"])
         self.assertEqual("2020-12-28T09:23:57Z", result["start"])
@@ -94,15 +94,15 @@ class CircleCiTests(aiounittest.AsyncTestCase):
         action = CircleCI(**{'username': 'super-man',
                              'repo': 'awesome'})
         result = await action.get_latest()
-        self.assertEqual(Integration.CIRCLECI, result[0]["type"])
+        self.assertEqual(IntegrationType.CIRCLECI, result[0]["type"])
         self.assertEqual(Result.PASS, result[0]["status"])
         self.assertEqual("build_and_test", result[0]["name"])
 
-        self.assertEqual(Integration.CIRCLECI, result[1]["type"])
+        self.assertEqual(IntegrationType.CIRCLECI, result[1]["type"])
         self.assertEqual(Result.FAIL, result[1]["status"])
         self.assertEqual("check_vulnerabilities", result[1]["name"])
 
-        self.assertEqual(Integration.CIRCLECI, result[2]["type"])
+        self.assertEqual(IntegrationType.CIRCLECI, result[2]["type"])
         self.assertEqual(Result.PASS, result[2]["status"])
         self.assertEqual("scan_for_vulnerabilities", result[2]["name"])
 

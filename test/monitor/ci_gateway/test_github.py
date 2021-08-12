@@ -8,14 +8,14 @@ import aiounittest
 from aioresponses import aioresponses
 
 from monitor.ci_gateway.github import GitHubAction, APIError
-from monitor.ci_gateway.constants import CiResult as Result, Integration
+from monitor.ci_gateway.constants import CiResult as Result, IntegrationType
 
 os.environ['GITHUB_TOKEN'] = 'secret'
 
 
 class GithubTests(aiounittest.AsyncTestCase):
     def test_type(self):
-        self.assertEqual(Integration.GITHUB,
+        self.assertEqual(IntegrationType.GITHUB,
                          GitHubAction(**{
                              'username': 'super-man',
                              'repo': 'awesome'}).get_type())
@@ -30,7 +30,7 @@ class GithubTests(aiounittest.AsyncTestCase):
             "name": "amazing-workflow"
         }"""
         result = GitHubAction.map_result(json.loads(latest))
-        self.assertEqual(Integration.GITHUB, result["type"])
+        self.assertEqual(IntegrationType.GITHUB, result["type"])
         self.assertEqual(Result.PASS, result["status"])
         self.assertEqual("2020-12-28T09:23:57Z", result["start"])
         self.assertEqual(448533827, result["id"])
@@ -124,7 +124,7 @@ class GithubTests(aiounittest.AsyncTestCase):
                                  'repo': 'awesome'})
         result = await action.get_latest()
 
-        self.assertEqual(Integration.GITHUB, result[0]["type"])
+        self.assertEqual(IntegrationType.GITHUB, result[0]["type"])
         self.assertEqual("CI", result[0]["name"])
         self.assertEqual(
             "https://github.com/worthington10TW/gpio-build-monitor/actions/runs/448533827",  # noqa: E501

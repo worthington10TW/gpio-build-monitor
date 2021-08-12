@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 import asyncio
+from typing import TypedDict
+
 import enum
 import monitor.ci_gateway.constants as ci_constants
+from monitor.ci_gateway.constants import CiResult
 
 
 class Result(enum.Enum):
@@ -27,18 +30,25 @@ def get_status(result: dict) -> Result:
         return Result.UNKNOWN
 
 
+class OverallStatus(TypedDict):
+    type: str
+    is_running: bool
+    status: CiResult
+
+
 class AggregatorService(object):
     def __init__(self, integrations: dict):
         self.integrations = integrations
 
-    async def run(self):
-        tasks = [integration() for integration in self.integrations]
+    async def run(self) -> OverallStatus:
+        tasks = [asyncio.create_task(integration())
+                 for integration in self.integrations]
         done, pending = await asyncio.wait(tasks)
 
         result = []
         [result.extend(future.result()) for future in done]
 
-        return dict(
+        return OverallStatus(
             type="AGGREGATED",
             is_running=True
             if any(
