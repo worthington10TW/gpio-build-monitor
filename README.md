@@ -8,6 +8,7 @@ Get yourself a raspberry pi, some LEDs and clone this repo!
 
 ## To run
 
+- Make help `make`
 - Setup `make setup`
 - Test `make test`
 - Debug `make debug`
