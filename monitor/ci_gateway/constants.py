@@ -4,7 +4,17 @@ from enum import Enum
 from abc import abstractmethod, ABC
 import logging
 
-from build.lib.monitor.ci_gateway.constants import CiResult
+
+class CiResult(Enum):
+    PASS = "PASS"
+    FAIL = "FAIL"
+    RUNNING = "RUNNING"
+    UNKNOWN = "UNKNOWN"
+    CONNECTION_ERROR = "CONNECTION_ERROR"
+    NONE = "NONE"
+
+    def __eq__(self, other):
+        return self.value == other.value
 
 
 class IntegrationType(Enum):
@@ -31,18 +41,6 @@ class IntegrationAdapter(ABC):
     def get_latest(self) -> BuildStatus:
         logging.info(f'Initiating integration {self.get_type()}')
         pass
-
-
-class CiResult(Enum):
-    PASS = "PASS"
-    FAIL = "FAIL"
-    RUNNING = "RUNNING"
-    UNKNOWN = "UNKNOWN"
-    CONNECTION_ERROR = "CONNECTION_ERROR"
-    NONE = "NONE"
-
-    def __eq__(self, other):
-        return self.value == other.value
 
 
 class APIError(Exception):
