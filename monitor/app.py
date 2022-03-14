@@ -2,7 +2,7 @@
 
 import logging
 import asyncio
-import yaml
+import json
 import os
 import pprint
 
@@ -41,6 +41,6 @@ async def main(conf_file, level):
 def get_config(conf_file) -> Config:
     path = os.path.join(
         os.getcwd(), conf_file)
-    response = path
-    with open(response) as integrations:
-        return yaml.load(integrations)
+    response_json = path
+    with open(response_json) as integrations:
+        return json.load(integrations)

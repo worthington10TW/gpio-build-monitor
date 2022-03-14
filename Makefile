@@ -23,8 +23,8 @@ test: ## Lint monitor and test	and runs pytest with junit formatting
 	pipenv run pytest test/monitor -v --junitxml=junit/test-results.xml
 
 .PHONY: debug
-debug: ## Runs monitor using debug and monitor/integrations.yml configuration
-	pipenv run python3 monitor -log debug -conf monitor/integrations.yml
+debug: ## Runs monitor using debug and monitor/integrations.json configuration
+	pipenv run python3 monitor -log debug -conf monitor/integrations.json
 
 .PHONY: publish
 publish: test ## Removes existing build, dist and egg, then creates bdist_wheel

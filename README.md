@@ -33,7 +33,7 @@ Install the GPIO package `pip3 install Rpi.GPIO`
 
 Then run the module.
 
-`python3 -O -m monitor -conf integrations.yml`
+`python3 -O -m monitor -conf integrations.json`
 
 ## Signals
 
@@ -44,7 +44,7 @@ Then run the module.
 
 ## Setup
 
-Example setup can be found here: `src/integrations.yml`
+Example setup can be found here: `src/integrations.json`
 
 Config is passed using the `-conf` argument variable
 
