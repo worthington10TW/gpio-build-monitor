@@ -9,24 +9,22 @@ help:
         printf "%-30s %s\n" $$help_command $$help_info ; \
     done
 
-setup: ## Setup pipenv and run pipenv-setup sync
+bootstrap: ## Setup pipenv and run pipenv-setup sync
 	PYTHONPATH=$PYTHONPATH:..
-	pipenv --python 3
+	pip install pipenv
+	pipenv --python 3.10.2
 	pipenv install -d
 	pipenv run pipenv-setup sync
 
-.PHONY: init
-init: ## Lint monitor and test
+.PHONY: test
+test: ## Lint monitor and test	and runs pytest with junit formatting
 	pipenv run flake8 monitor
 	pipenv run flake8 test
-
-.PHONY: test
-test: init ## Runs pytest with junit formatting
 	pipenv run pytest test/monitor -v --junitxml=junit/test-results.xml
 
 .PHONY: debug
-debug: ## Runs monitor using debug and monitor/integrations.json configuration
-	pipenv run python3 monitor -log debug -conf monitor/integrations.json
+debug: ## Runs monitor using debug and monitor/integrations.yml configuration
+	pipenv run python3 monitor -log debug -conf monitor/integrations.yml
 
 .PHONY: publish
 publish: test ## Removes existing build, dist and egg, then creates bdist_wheel

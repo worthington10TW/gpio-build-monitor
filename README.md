@@ -9,7 +9,7 @@ Get yourself a raspberry pi, some LEDs and clone this repo!
 ## To run
 
 - Make help `make`
-- Setup `make setup`
+- Setup `make bootstrap`
 - Test `make test`
 - Debug `make debug`
 - Publish `make publish`
@@ -33,7 +33,7 @@ Install the GPIO package `pip3 install Rpi.GPIO`
 
 Then run the module.
 
-`python3 -O -m monitor -conf integrations.json`
+`python3 -O -m monitor -conf integrations.yml`
 
 ## Signals
 
@@ -44,7 +44,7 @@ Then run the module.
 
 ## Setup
 
-Example setup can be found here: `src/integrations.json`
+Example setup can be found here: `src/integrations.yml`
 
 Config is passed using the `-conf` argument variable
 

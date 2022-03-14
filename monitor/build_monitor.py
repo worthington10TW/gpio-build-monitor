@@ -23,18 +23,20 @@ class BuildMonitor(object):
         self.board.off(Lights.BLUE)
 
         logging.info(f'Setting output {result}')
-        if Result.PASS == status:
-            self.board.on(Lights.GREEN)
-            self.board.off(Lights.RED)
-        elif Result.FAIL == status:
-            self.board.off(Lights.GREEN)
-            self.board.on(Lights.RED)
-        elif Result.UNKNOWN == status:
-            self.board.on(Lights.GREEN)
-            self.board.on(Lights.RED)
-        else:
-            self.board.off(Lights.GREEN)
-            self.board.off(Lights.RED)
+
+        match status:
+            case Result.PASS:
+                self.board.on(Lights.GREEN)
+                self.board.off(Lights.RED)
+            case Result.FAIL:
+                self.board.off(Lights.GREEN)
+                self.board.on(Lights.RED)
+            case Result.UNKNOWN:
+                self.board.on(Lights.GREEN)
+                self.board.on(Lights.RED)
+            case _:
+                self.board.off(Lights.GREEN)
+                self.board.off(Lights.RED)
 
         if is_running:
             await self.board.pulse(Lights.YELLOW)
