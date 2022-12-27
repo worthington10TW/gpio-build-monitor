@@ -4,4 +4,4 @@ aioresponses~=0.7.3
 asyncio~=3.4.3
 pipenv-setup
 aiounittest~=1.4.1
-setuptools==60.9.3
+setuptools==65.5.1
